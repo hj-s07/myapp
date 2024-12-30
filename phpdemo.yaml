@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: phpdemo
+  name: phpdemo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phpdemo
+  template:
+    metadata:
+      labels:
+        app: phpdemo
+    spec:
+      containers:
+      - image: myregistry.com/myproj/phpdemo
+        name: phpdemo
+      imagePullSecrets:
+      - name: regcred
